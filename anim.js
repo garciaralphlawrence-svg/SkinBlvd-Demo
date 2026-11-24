@@ -112,7 +112,6 @@
         .from(img, { scale: 1.3, duration: 2, ease: E2 }, 0);
       gsap.to(img, { yPercent: -6, ease: 'none', scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
-    gsap.from('.pieces li', { y: 30, opacity: 0, duration: 1, stagger: .12, ease: E, scrollTrigger: { trigger: '.pieces', start: 'top 85%' } });
 
     /* ---------- this or that ---------- */
     window.__animVs = () => gsap.from('#vs > *', { y: 40, opacity: 0, duration: .9, stagger: .08, ease: E, clearProps: 'all' });
