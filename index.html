@@ -13,218 +13,236 @@
 <meta property="og:image" content="assets/img/hero.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
-<body>
+<body class="is-loading">
 
-<div class="progress" aria-hidden="true"><span></span></div>
+<!-- Preloader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-mark">
+    <span class="l-the">THE</span>
+    <span class="l-line"></span>
+    <span class="l-name"><span>SKIN</span> <span>BLVD</span></span>
+    <span class="l-sub">Aesthetic and Wellness Clinic</span>
+  </div>
+  <div class="loader-count"><span id="loadCount">0</span></div>
+</div>
 
 <header class="nav" id="nav">
-  <a href="#top" class="logo" aria-label="The Skin BLVD home">
-    <small>THE</small><b>SKIN BLVD</b><i>Aesthetic and Wellness Clinic</i>
-  </a>
+  <a href="#top" class="logo" aria-label="The Skin BLVD home"><small>THE</small><b>SKIN BLVD</b></a>
   <nav class="links" id="links">
     <a href="#treatments">Treatments</a>
     <a href="#liftera">Liftera A2</a>
-    <a href="#thisorthat">This or That</a>
     <a href="#doctors">Doctors</a>
     <a href="#inside">The Clinic</a>
-    <a href="#visit">Branches</a>
+    <a href="#visit">Visit</a>
     <button class="linkbtn" data-chat>Ask us</button>
   </nav>
-  <button class="btn btn-cream nav-cta" data-book>Book now</button>
+  <button class="nav-cta magnetic" data-book><span>Book a visit</span></button>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i></i><i></i></button>
 </header>
 
 <main id="top">
 
 <!-- HERO -->
-<section class="hero grain">
-  <div class="glow" aria-hidden="true"></div>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="lockup reveal" aria-hidden="true">
-        <small>THE</small><b>SKIN BLVD</b><i>Aesthetic and Wellness Clinic</i>
+<section class="hero" id="hero">
+  <div class="hero-media" id="heroMedia">
+    <img src="assets/img/hero.webp" alt="The Skin BLVD front desk in Makati, with the backlit logo on a rose plaster wall" width="1800" height="1473">
+  </div>
+  <div class="hero-shade"></div>
+  <div class="hero-inner wrap">
+    <p class="hero-kicker"><span>Aesthetic &amp; Wellness Clinic</span><span>Makati · Quezon City</span></p>
+    <h1 class="hero-title" id="heroTitle"><span class="ln">Where science</span><span class="ln it">meets beauty.</span></h1>
+    <div class="hero-foot">
+      <p class="hero-lede">Doctor-led lifting, contouring and skin treatments by the Derm Besties, Doc Nina &amp; Doc Shine.</p>
+      <div class="hero-cta">
+        <button class="btn btn-cream magnetic" data-book><span>Book a consultation</span></button>
+        <a class="btn-text" href="#treatments">Explore treatments <i>↓</i></a>
       </div>
-      <h1 class="reveal">Where science<em>meets beauty.</em></h1>
-      <p class="lede reveal">Doctor-led lifting, contouring and skin treatments by the Derm Besties, Doc Nina &amp; Doc Shine. We recommend what your skin truly needs.</p>
-      <div class="hero-cta reveal">
-        <button class="btn btn-cream" data-book>Book a consultation</button>
-        <a class="btn btn-ghost" href="#treatments">See treatments</a>
-      </div>
-      <p class="hero-meta reveal"><span class="open-dot" id="openNow">Open daily · 11AM – 7PM</span><span>Makati &amp; QC</span><span>Walk-ins welcome</span></p>
-    </div>
-    <div class="hero-art reveal">
-      <div class="arch"><img src="assets/img/hero.webp" alt="The Skin BLVD front desk in Makati, with the backlit logo on a rose plaster wall" width="1200" height="1380"></div>
-      <figure class="polaroid tilt-l hero-pol">
-        <span class="clip" aria-hidden="true"></span>
-        <img src="assets/img/founders.webp" alt="Doc Nina and Doc Shine, founders of The Skin BLVD" width="900" height="1125">
-        <figcaption>Doc Nina &amp; Doc Shine</figcaption>
-      </figure>
     </div>
   </div>
-  <div class="ticker" aria-hidden="true"><div class="track" id="marquee"></div></div>
+  <div class="hero-bar wrap">
+    <span class="open-dot" id="openNow">Open daily · 11AM – 7PM</span>
+    <span>Appointments &amp; walk-ins</span>
+    <span class="scroll-cue" aria-hidden="true"><i></i>Scroll</span>
+  </div>
 </section>
 
-<!-- TREATMENTS -->
-<section class="section plaster grain" id="treatments">
+<!-- STATEMENT -->
+<section class="statement grain" id="about">
   <div class="wrap">
-    <div class="head split">
-      <h2>The treatment menu<em>Your skin goals, doctor-guided</em></h2>
-      <p class="sub">Every visit starts with an assessment of your skin and facial anatomy, so we can recommend the treatment that’s right for you.</p>
+    <p class="label">(01) — Our philosophy</p>
+    <p class="big-quote" id="bigQuote">We don’t just recommend what you want. We recommend what your skin truly needs, because your trust, safety and best results always come first.</p>
+    <div class="stat-row">
+      <div><b data-count="2">0</b><span>branches, Makati &amp; QC</span></div>
+      <div><b data-count="5">0</b><span>doctors on the team</span></div>
+      <div><b data-count="7">0</b><span>treatment rooms in Makati</span></div>
+      <div><b data-count="6.8" data-dec="1" data-suf="K">0</b><span>followers on Facebook</span></div>
     </div>
-    <div class="tabs" id="tabs" role="tablist" aria-label="Treatment categories"></div>
-    <div class="menu">
-      <figure class="polaroid tilt-l menu-pol">
-        <span class="clip" aria-hidden="true"></span>
-        <img id="menuImg" src="assets/img/p-lift.webp" alt="" width="900" height="1125">
-        <figcaption id="menuCap"></figcaption>
-      </figure>
-      <div class="items" id="items" role="tabpanel" aria-live="polite"></div>
-    </div>
-    <p class="fine">Rates are shared after consultation or by message · Makati <a href="tel:+639277704026">0927 770 4026</a> · QC <a href="tel:+639683203762">0968 320 3762</a></p>
   </div>
+</section>
+
+<!-- TREATMENTS: horizontal pinned scroll -->
+<section class="treat" id="treatments">
+  <div class="treat-head wrap">
+    <p class="label light">(02) — The treatment menu</p>
+    <h2 class="split">Your skin goals, <em>doctor-guided.</em></h2>
+  </div>
+  <div class="treat-pin" id="treatPin">
+    <div class="treat-track" id="treatTrack"></div>
+  </div>
+  <p class="treat-fine wrap">Rates are shared after consultation or by message · Makati <a href="tel:+639277704026">0927 770 4026</a> · QC <a href="tel:+639683203762">0968 320 3762</a></p>
 </section>
 
 <!-- LIFTERA -->
-<section class="section maroon grain" id="liftera">
+<section class="liftera grain" id="liftera">
   <div class="wrap lift-grid">
-    <div class="lift-art reveal">
-      <div class="torn"><img src="assets/img/liftera.webp" alt="Liftera A2 lifting machine at The Skin BLVD" loading="lazy" width="1000" height="1250"></div>
-      <figure class="polaroid tilt-r lift-pol"><span class="clip" aria-hidden="true"></span><img src="assets/img/liftera2.webp" alt="Liftera treatment on a patient" loading="lazy" width="700" height="700"><figcaption>A more comfortable treatment</figcaption></figure>
+    <div class="lift-media">
+      <div class="reveal-mask"><img src="assets/img/liftera.webp" alt="Liftera A2 lifting machine at The Skin BLVD" loading="lazy" width="1402" height="1753"></div>
     </div>
     <div class="lift-copy">
-      <p class="tag">Now at The Skin BLVD</p>
-      <h2>HIFU, reimagined.<em>Meet Liftera A2</em></h2>
-      <p class="sub">Scared of traditional HIFU? This one’s different: next-generation lifting, tightening and contouring, designed for a more comfortable, precise treatment.</p>
-      <div class="pieces">
-        <div class="note"><small>01</small><b>Line handpiece</b><span>For broader treatment areas. Precise, even delivery that lifts and tightens skin.</span></div>
-        <div class="note"><small>02</small><b>Pen handpiece</b><span>For curved facial contours. Precise movement, targeted treatment.</span></div>
-      </div>
-      <button class="btn btn-cream" data-book="Liftera A2">Book Liftera A2</button>
+      <p class="label light">(03) — New at The Skin BLVD</p>
+      <h2 class="split">HIFU, <em>reimagined.</em></h2>
+      <p class="body-l fade-up">Scared of traditional HIFU? Liftera A2 is next-generation lifting, tightening and contouring, designed for a more comfortable, precise treatment.</p>
+      <ol class="pieces">
+        <li class="fade-up"><span>01</span><div><b>Line handpiece</b><p>For broader treatment areas. Precise, even delivery that lifts and tightens skin.</p></div></li>
+        <li class="fade-up"><span>02</span><div><b>Pen handpiece</b><p>For curved facial contours. Precise movement, targeted treatment.</p></div></li>
+      </ol>
+      <button class="btn btn-cream magnetic fade-up" data-book="Liftera A2"><span>Book Liftera A2</span></button>
     </div>
   </div>
 </section>
 
 <!-- THIS OR THAT -->
-<section class="section maroon-l grain" id="thisorthat">
+<section class="tot" id="thisorthat">
   <div class="wrap">
-    <div class="head center">
-      <p class="tag">This or that · Derm edition</p>
-      <h2>Same goal<em>Different approach</em></h2>
+    <div class="sec-head">
+      <p class="label">(04) — This or that, derm edition</p>
+      <h2 class="split">Same goal, <em>different approach.</em></h2>
     </div>
-    <div class="vs-tabs" id="vsTabs" role="tablist"></div>
-    <div class="vs" id="vs" aria-live="polite"></div>
-    <p class="vs-note" id="vsNote"></p>
+    <div class="tot-tabs" id="vsTabs" role="tablist"></div>
+    <div class="tot-grid" id="vs" aria-live="polite"></div>
+    <p class="tot-note" id="vsNote"></p>
   </div>
 </section>
 
-<!-- MYTHS -->
-<section class="section mauve grain" id="myths-sec">
-  <div class="wrap">
-    <div class="head center">
-      <h2>Microneedling<em>Myths vs facts</em></h2>
-      <p class="sub">What’s true and what’s just a myth? Our doctors set the record straight.</p>
-    </div>
-    <div class="myths" id="myths"></div>
-  </div>
-</section>
+<!-- MARQUEE -->
+<div class="band" aria-hidden="true"><div class="band-track" id="band"></div></div>
 
 <!-- DOCTORS -->
-<section class="section plaster grain" id="doctors">
-  <div class="wrap docs">
-    <div class="docs-art reveal">
-      <figure class="polaroid big tilt-r"><span class="clip" aria-hidden="true"></span><img src="assets/img/founders.webp" alt="Doc Nina and Doc Shine at The Skin BLVD" loading="lazy" width="900" height="1125"><figcaption>The founders · Doc Nina &amp; Doc Shine</figcaption></figure>
+<section class="docs grain" id="doctors">
+  <div class="wrap docs-grid">
+    <div class="docs-media">
+      <div class="reveal-mask tall"><img src="assets/img/founders.webp" alt="Doc Nina and Doc Shine, founders of The Skin BLVD" loading="lazy" width="1440" height="1800"></div>
+      <p class="caption">The founders · Doc Nina &amp; Doc Shine</p>
     </div>
-    <div>
-      <p class="tag dark">Meet the Derm Besties</p>
-      <h2>The doctors<em>behind your glow</em></h2>
-      <p class="sub">Transforming skin health with passion and expertise. Your skin deserves to be in good hands.</p>
-      <ul class="team">
+    <div class="docs-copy">
+      <p class="label">(05) — Meet the Derm Besties</p>
+      <h2 class="split">The doctors <em>behind your glow.</em></h2>
+      <p class="body-l fade-up">Transforming skin health with passion and expertise. Every treatment plan starts with a doctor’s assessment of your skin and facial anatomy.</p>
+      <ul class="doc-list">
         <li><b>Doc Nina</b><span>Co-founder</span></li>
         <li><b>Doc Shine</b><span>Co-founder</span></li>
         <li><b>Doc Erin</b><span>Loves NCTF Skin Booster</span></li>
         <li><b>Doc Cel</b><span>QC branch</span></li>
         <li><b>Doc Vada</b><span>QC branch</span></li>
       </ul>
-      <blockquote class="quote">“We don’t just recommend what you want; we recommend what you truly need.”</blockquote>
     </div>
   </div>
 </section>
 
+<!-- MYTHS -->
+<section class="myths-sec" id="myths">
+  <div class="wrap myths-grid">
+    <div class="myths-head">
+      <p class="label light">(06) — Microneedling</p>
+      <h2 class="split">Myths <em>vs facts.</em></h2>
+      <p class="body-l fade-up">What’s true and what’s just a myth? Our doctors set the record straight.</p>
+    </div>
+    <ol class="myth-list" id="mythList"></ol>
+  </div>
+</section>
+
+<!-- INSIDE -->
+<section class="inside grain" id="inside">
+  <div class="wrap">
+    <div class="sec-head split-head">
+      <div>
+        <p class="label">(07) — Hello, Makati</p>
+        <h2 class="split">Bigger space, <em>better skin days.</em></h2>
+      </div>
+      <p class="body-l fade-up">Our new home in Arnaiz is three times bigger: seven treatment rooms, a doctors’ room, a lounge and a coffee &amp; snack bar. Light to dark, and still the Skin BLVD you know by heart.</p>
+    </div>
+    <div class="collage" id="collage"></div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results" id="stories">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="label light">(08) — Skin BLVD babies</p>
+      <h2 class="split">Real results, <em>sculpted naturally.</em></h2>
+    </div>
+    <div class="pols" id="storiesGrid"></div>
+  </div>
+</section>
+
 <!-- FINDER -->
-<section class="section cream" id="finder">
+<section class="finder-sec grain" id="finder">
   <div class="wrap finder">
     <div>
-      <h2>Skin goal finder<em>What would you like to work on?</em></h2>
-      <p class="sub">Tap a concern to see matching treatments. Your doctor confirms the best plan during your consultation.</p>
+      <p class="label">(09) — Skin goal finder</p>
+      <h2 class="split">What would you like <em>to work on?</em></h2>
+      <p class="body-l fade-up">Tap a concern to see matching treatments. Your doctor confirms the best plan during your consultation.</p>
       <div class="concerns" id="concerns" role="group" aria-label="Concerns"></div>
     </div>
     <div class="finder-out" id="finderOut" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- INSIDE -->
-<section class="section tiles" id="inside">
-  <div class="wrap">
-    <div class="head split light">
-      <h2>Hello, Makati<em>Bigger space, better skin days</em></h2>
-      <p class="sub">Our new home in Arnaiz: three times bigger, light to dark, and still the Skin BLVD you know by heart. Seven treatment rooms, a doctors’ room, and a coffee &amp; snack bar.</p>
-    </div>
-    <div class="mosaic" id="mosaic"></div>
-  </div>
-</section>
-
-<!-- STORIES -->
-<section class="section maroon grain" id="stories">
-  <div class="wrap">
-    <div class="head center">
-      <p class="tag">Skin BLVD babies</p>
-      <h2>Real results<em>Sculpted naturally</em></h2>
-      <p class="sub">Before-and-afters as shared on our page.</p>
-    </div>
-    <div class="stories" id="storiesGrid"></div>
-  </div>
-</section>
-
 <!-- FAQ -->
-<section class="section plaster grain" id="faq">
+<section class="faq-sec" id="faq">
   <div class="wrap faq-grid">
     <div>
-      <h2>Good to know<em>Questions, answered</em></h2>
-      <p class="sub">Got another one? <button class="txt-btn" data-chat>Ask us here →</button></p>
+      <p class="label">(10) — Good to know</p>
+      <h2 class="split">Questions, <em>answered.</em></h2>
+      <p class="body-l fade-up">Got another one? <button class="link-u" data-chat>Ask us here</button></p>
     </div>
     <div class="faq" id="faqList"></div>
   </div>
 </section>
 
 <!-- VISIT -->
-<section class="section cream" id="visit">
+<section class="visit grain" id="visit">
   <div class="wrap">
-    <div class="head split">
-      <h2>Two branches<em>Makati or Quezon City</em></h2>
-      <p class="sub">Both open daily, 11AM to 7PM. We accept appointments and walk-ins.</p>
+    <div class="sec-head split-head">
+      <div>
+        <p class="label">(11) — Visit us</p>
+        <h2 class="split">Makati <em>or Quezon City.</em></h2>
+      </div>
+      <p class="body-l fade-up">Both branches are open daily, 11AM to 7PM, for appointments and walk-ins.</p>
     </div>
     <div class="branches">
-      <article class="branch reveal">
-        <iframe title="Map to The Skin BLVD Makati, Colbella Arcade, 910 Antonio Arnaiz Ave" src="https://maps.google.com/maps?q=Colbella%20Arcade%2C%20910%20Antonio%20Arnaiz%20Ave%2C%20San%20Lorenzo%2C%20Makati&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <article class="branch fade-up">
+        <div class="map"><iframe title="Map to The Skin BLVD Makati, Colbella Arcade, 910 Antonio Arnaiz Ave" src="https://maps.google.com/maps?q=Colbella%20Arcade%2C%20910%20Antonio%20Arnaiz%20Ave%2C%20San%20Lorenzo%2C%20Makati&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
         <div class="bd">
-          <p class="tag dark">Makati branch · New</p>
+          <p class="b-num">01 — Makati · New</p>
           <h3>Colbella Arcade</h3>
           <p>2F, Colbella Arcade, 910 Antonio Arnaiz Ave., San Lorenzo, Makati City 1223</p>
           <a class="phone" href="tel:+639277704026">0927 770 4026</a>
-          <div class="row"><button class="btn btn-maroon" data-book data-branch="Makati">Book in Makati</button><a class="btn btn-line" href="https://maps.google.com/?q=Colbella+Arcade+910+Antonio+Arnaiz+Ave+San+Lorenzo+Makati" target="_blank" rel="noopener">Directions</a></div>
+          <div class="row"><button class="btn btn-maroon magnetic" data-book data-branch="Makati"><span>Book in Makati</span></button><a class="btn-text dark" href="https://maps.google.com/?q=Colbella+Arcade+910+Antonio+Arnaiz+Ave+San+Lorenzo+Makati" target="_blank" rel="noopener">Directions <i>↗</i></a></div>
         </div>
       </article>
-      <article class="branch reveal">
-        <iframe title="Map to The Skin BLVD QC, Symphony Towers 1, Timog Ave" src="https://maps.google.com/maps?q=Symphony%20Towers%201%2C%20Sgt.%20Esguerra%20corner%20Timog%20Ave%2C%20Quezon%20City&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <article class="branch fade-up">
+        <div class="map"><iframe title="Map to The Skin BLVD QC, Symphony Towers 1, Timog Ave" src="https://maps.google.com/maps?q=Symphony%20Towers%201%2C%20Sgt.%20Esguerra%20corner%20Timog%20Ave%2C%20Quezon%20City&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
         <div class="bd">
-          <p class="tag dark">Quezon City branch</p>
+          <p class="b-num">02 — Quezon City</p>
           <h3>Symphony Towers I</h3>
           <p>GF, Symphony Towers I, Sgt. Esguerra corner Timog Ave., South Triangle, Quezon City 1103</p>
           <a class="phone" href="tel:+639683203762">0968 320 3762</a>
-          <div class="row"><button class="btn btn-maroon" data-book data-branch="QC">Book in QC</button><a class="btn btn-line" href="https://maps.google.com/?q=Symphony+Towers+1+Sgt+Esguerra+Timog+Ave+Quezon+City" target="_blank" rel="noopener">Directions</a></div>
+          <div class="row"><button class="btn btn-maroon magnetic" data-book data-branch="QC"><span>Book in QC</span></button><a class="btn-text dark" href="https://maps.google.com/?q=Symphony+Towers+1+Sgt+Esguerra+Timog+Ave+Quezon+City" target="_blank" rel="noopener">Directions <i>↗</i></a></div>
         </div>
       </article>
     </div>
@@ -232,39 +250,37 @@
 </section>
 
 <!-- CTA -->
-<section class="cta grain">
-  <div class="glow" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="lockup" aria-hidden="true"><small>THE</small><b>SKIN BLVD</b><i>Aesthetic and Wellness Clinic</i></div>
-    <h2>Your skin deserves<em>more than just the basics</em></h2>
-    <button class="btn btn-cream" data-book>Book your glow-up</button>
+<section class="cta" id="cta">
+  <div class="cta-media"><img src="assets/img/in2.webp" alt="" loading="lazy" width="1400" height="868"></div>
+  <div class="wrap cta-inner">
+    <p class="label light">Your glow-up starts here</p>
+    <h2 class="split">Your skin deserves <em>more than the basics.</em></h2>
+    <button class="btn btn-cream magnetic" data-book><span>Book a consultation</span></button>
   </div>
 </section>
 
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-grid">
-    <div>
-      <p class="foot-h">Makati</p><p>2F Colbella Arcade, 910 Antonio Arnaiz Ave.<br><a href="tel:+639277704026">0927 770 4026</a></p>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><p class="foot-h">Makati</p><p>2F Colbella Arcade, 910 Antonio Arnaiz Ave., San Lorenzo<br><a href="tel:+639277704026">0927 770 4026</a></p></div>
+      <div><p class="foot-h">Quezon City</p><p>GF Symphony Towers I, Sgt. Esguerra cor. Timog Ave.<br><a href="tel:+639683203762">0968 320 3762</a></p></div>
+      <div><p class="foot-h">Hours</p><p>Daily, 11AM – 7PM<br>Appointments &amp; walk-ins</p></div>
+      <div><p class="foot-h">Follow</p><p><a href="https://www.facebook.com/theskinblvdph" target="_blank" rel="noopener">Facebook</a><br><a href="https://www.instagram.com/theskinblvdph/" target="_blank" rel="noopener">Instagram</a></p></div>
     </div>
-    <div>
-      <p class="foot-h">Quezon City</p><p>GF Symphony Towers I, Sgt. Esguerra cor. Timog Ave.<br><a href="tel:+639683203762">0968 320 3762</a></p>
+    <p class="foot-word" aria-hidden="true">SKIN BLVD</p>
+    <div class="foot-base">
+      <span>Treatments, doctors, hours and branch details as posted on The Skin BLVD PH Facebook page. Please confirm availability and rates when you book. Concept website prepared for The Skin BLVD’s review.</span>
+      <span>Design &amp; build by Likha Studio</span>
     </div>
-    <div>
-      <p class="foot-h">Follow</p><p><a href="https://www.facebook.com/theskinblvdph" target="_blank" rel="noopener">facebook.com/theskinblvdph</a><br><a href="https://www.instagram.com/theskinblvdph/" target="_blank" rel="noopener">@theskinblvdph</a></p>
-    </div>
-  </div>
-  <div class="wrap foot-base">
-    <span>Treatments, doctors, hours and branch details as posted on The Skin BLVD PH Facebook page. Please confirm availability and rates when you book. Concept website prepared for The Skin BLVD’s review.</span>
-    <span>Design &amp; build by Likha Studio</span>
   </div>
 </footer>
 
 <div class="modal" id="book" role="dialog" aria-modal="true" aria-labelledby="bookTitle" hidden>
   <div class="sheet">
     <button class="x" data-close aria-label="Close">×</button>
-    <p class="tag dark">Book a consultation</p>
+    <p class="label">Book a consultation</p>
     <h3 id="bookTitle">Plan your visit</h3>
     <ol class="dots" id="dots"><li class="on">Treatment</li><li>Schedule</li><li>Details</li><li>Send</li></ol>
     <div class="step" data-step="0">
@@ -290,25 +306,30 @@
       <p class="mini">Your request is ready. Send it the way you like:</p>
       <pre class="msg" id="bkMsg"></pre>
       <div class="send">
-        <button class="btn btn-maroon" id="sendMsgr">Copy &amp; open Messenger</button>
+        <button class="btn btn-maroon" id="sendMsgr"><span>Copy &amp; open Messenger</span></button>
         <a class="btn btn-line" id="sendSms" href="#">Text the branch</a>
-        <button class="btn btn-line" id="sendIcs">Add to calendar</button>
+        <button class="btn btn-line" id="sendIcs"><span>Add to calendar</span></button>
         <a class="btn btn-line" id="callBr" href="#">Call the branch</a>
       </div>
       <p class="mini muted" id="copied" aria-live="polite"></p>
     </div>
-    <div class="bk-nav"><button class="btn btn-line" id="bkBack">Back</button><button class="btn btn-maroon" id="bkNext">Next</button></div>
+    <div class="bk-nav"><button class="btn btn-line" id="bkBack"><span>Back</span></button><button class="btn btn-maroon" id="bkNext"><span>Next</span></button></div>
   </div>
 </div>
 
-<button class="chat-fab" data-chat aria-label="Ask Skin BLVD"><span class="mono" aria-hidden="true">SB</span><span class="lbl">Ask Skin BLVD</span></button>
+<button class="chat-fab" data-chat aria-label="Ask Skin BLVD"><span class="mono" aria-hidden="true">SB</span><span class="lbl">Ask us</span></button>
 <div class="chat" id="chat" role="dialog" aria-label="Ask Skin BLVD" hidden>
   <div class="chat-head"><span class="mono" aria-hidden="true">SB</span><div><b>Ask Skin BLVD</b><small>Treatments, branches, booking</small></div><button class="x" data-close aria-label="Close">×</button></div>
   <div class="chat-log" id="chatLog" aria-live="polite"></div>
   <div class="chat-quick" id="chatQuick"></div>
-  <form class="chat-form" id="chatForm"><input id="chatIn" placeholder="Type a question…" aria-label="Your question" maxlength="200" autocomplete="off"><button class="btn btn-maroon" aria-label="Send">➤</button></form>
+  <form class="chat-form" id="chatForm"><input id="chatIn" placeholder="Type a question…" aria-label="Your question" maxlength="200" autocomplete="off"><button class="btn btn-maroon" aria-label="Send"><span>➤</span></button></form>
 </div>
 
-<script src="script.js?v=3"></script>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/js/lenis.min.js"></script>
+<script src="script.js?v=4"></script>
+<script src="anim.js?v=4"></script>
 </body>
 </html>

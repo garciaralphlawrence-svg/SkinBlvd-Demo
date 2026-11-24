@@ -42,20 +42,10 @@
       ['Exilis for body', 'Radiofrequency and ultrasound for smoother, firmer-looking skin, including cellulite concerns.', ['Body']]] }
   ];
   const ALL = CATS.flatMap(c => c.items.map(([n, d]) => ({ n, d, cat: c.tab })));
-  let catI = 0;
-  $('#tabs').innerHTML = CATS.map((c, i) => `<button class="tab" role="tab" aria-selected="${i === 0}" data-t="${i}">${esc(c.tab)}</button>`).join('');
-  const renderCat = () => {
-    const c = CATS[catI];
-    $$('.tab').forEach((b, i) => b.setAttribute('aria-selected', String(i === catI)));
-    const mi = $('#menuImg'); mi.style.animation = 'none'; mi.offsetWidth; mi.style.animation = ''; mi.src = `assets/img/${c.img}.webp`; mi.alt = c.tab + ' poster from The Skin BLVD';
-    $('#menuCap').textContent = c.cap;
-    $('#items').innerHTML = c.items.map(([n, d, tags], i) => `<article class="item" style="animation-delay:${i * 60}ms"><h3>${esc(n)}</h3><p>${esc(d)}</p><div class="foot-row"><div class="tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div><button data-book="${esc(n)}" aria-label="Book ${esc(n)}">Book</button></div></article>`).join('');
-  };
-  $('#tabs').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (b) { catI = +b.dataset.t; renderCat(); } });
-  renderCat();
-
-  const mq = ['Liftera A2', 'Jawtox', 'Nefertiti Lift', 'Lip Fillers', 'Rejuran I', 'Luhilo', 'PicoSure', 'GentleMax Pro', 'CO2 Laser', 'SkinPen', 'HydraFacial', 'Lemon Bottle'];
-  $('#marquee').innerHTML = [...mq, ...mq].map(t => `<span>${esc(t)}</span>`).join('');
+  const PX = { lift: 'liftera', tox: 'p-tox', fill: 'p-fill', laser: 'p-laser', skin: 'p-skin', body: 'p-body' };
+  $('#treatTrack').innerHTML = `<div class="t-intro"><p>Six ways to care for your skin, each one planned with a doctor.</p><span class="t-hint">Keep scrolling <i>→</i></span></div>` + CATS.map((c, i) => `<article class="t-panel"><div class="t-img"><img src="assets/img/${PX[c.id]}.webp" alt="${esc(c.tab)} at The Skin BLVD" loading="lazy"></div><div class="t-body"><p class="t-num">${String(i + 1).padStart(2, '0')} / ${String(CATS.length).padStart(2, '0')}</p><h3>${esc(c.tab)}</h3><p class="t-cap">${esc(c.cap)}</p><ul>${c.items.map(([n, d]) => `<li><button data-book="${esc(n)}"><b>${esc(n)}</b><span>${esc(d)}</span><i aria-hidden="true">↗</i></button></li>`).join('')}</ul></div></article>`).join('');
+  const mq = ['Book your glow-up', 'Liftera A2', 'Jawtox', 'Rejuran I', 'PicoSure', 'Luhilo', 'SkinPen'];
+  $('#band').innerHTML = [...mq, ...mq, ...mq].map(t => `<span>${esc(t)}</span>`).join('');
 
   /* ===== This or That (from their comparison posts) ===== */
   const VS = [
@@ -74,8 +64,8 @@
   ];
   let vsI = 0;
   $('#vsTabs').innerHTML = VS.map((v, i) => `<button role="tab" aria-selected="${i === 0}" data-v="${i}">${esc(v[0])}</button>`).join('');
-  const card = ([k, h, p, li]) => `<div class="vbox"><div class="top"><small>${esc(k)}</small><h3>${esc(h)}</h3><p>${esc(p)}</p></div><ul>${li.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
-  const renderVs = () => { const v = VS[vsI]; $$('#vsTabs button').forEach((b, i) => b.setAttribute('aria-selected', String(i === vsI))); $('#vs').innerHTML = card(v[2]) + `<span class="vs-badge" aria-hidden="true">vs</span>` + card(v[3]); $('#vsNote').innerHTML = `${esc(v[1])} <button data-book>Let our doctors decide →</button>`; };
+  const card = ([k, h, p, li], s) => `<div class="vbox ${s}"><small>${esc(k)}</small><h3>${esc(h)}</h3><p>${esc(p)}</p><ul>${li.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  const renderVs = () => { const v = VS[vsI]; $$('#vsTabs button').forEach((b, i) => b.setAttribute('aria-selected', String(i === vsI))); $('#vs').innerHTML = card(v[2], 'a') + `<span class="vs-badge" aria-hidden="true">vs</span>` + card(v[3], 'b'); $('#vsNote').innerHTML = `${esc(v[1])} <button class="link-u" data-book>Let our doctors decide</button>`; window.__animVs?.(); };
   $('#vsTabs').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) { vsI = +b.dataset.v; renderVs(); } });
   renderVs();
 
@@ -88,8 +78,7 @@
     ['You can apply makeup immediately.', 'Avoid makeup for at least 24 hours or until your provider advises it’s safe.'],
     ['Recovery takes weeks.', 'Mild redness typically fades within 24–72 hours, though recovery varies.']
   ];
-  $('#myths').innerHTML = MYTHS.map(([m, f]) => `<div class="myth reveal" data-open="true"><span class="pill">MYTH</span><div class="mbox">${esc(m)}</div><div class="fact"><span class="pill">FACT</span><div class="mbox">${esc(f)}</div></div></div>`).join('');
-  $('#myths').addEventListener('click', e => { const b = e.target.closest('button.mbox'); if (!b) return; const m = b.closest('.myth'), o = m.dataset.open !== 'true'; m.dataset.open = String(o); b.setAttribute('aria-expanded', String(o)); });
+  $('#mythList').innerHTML = MYTHS.map(([m, f], i) => `<li class="myth"><span class="m-num">${String(i + 1).padStart(2, '0')}</span><div><p class="m-myth"><span class="m-tag">Myth</span><s>${esc(m)}</s></p><p class="m-fact"><span class="m-tag">Fact</span>${esc(f)}</p></div></li>`).join('');
 
   /* ===== Finder ===== */
   const CON = [
@@ -123,12 +112,12 @@
   empty();
 
   /* ===== Inside ===== */
-  const IN = [['in1', 'Front desk', 'a'], ['in4', 'Coffee & snack bar', 'b'], ['in2', 'Lounge', ''], ['in3', 'Doctors’ room', ''], ['in5', 'Hallway to 7 treatment rooms', 'w'], ['in6', 'Storefront', 'w']];
-  $('#mosaic').innerHTML = IN.map(([f, c, k]) => `<figure class="reveal ${k}"><img src="assets/img/${f}.webp" alt="The Skin BLVD Makati: ${esc(c)}" loading="lazy"><figcaption>${esc(c)}</figcaption></figure>`).join('');
+  const IN = [['in1', 'Front desk', 'c1', 0.12], ['in4', 'Coffee & snack bar', 'c2', -0.1], ['in2', 'Lounge', 'c3', 0.18], ['in3', 'Doctors’ room', 'c4', -0.06], ['in5', 'Hallway to 7 treatment rooms', 'c5', 0.08], ['in6', 'Storefront', 'c6', -0.14]];
+  $('#collage').innerHTML = IN.map(([f, c, k, s]) => `<figure class="cl ${k}" data-speed="${s}"><div class="cl-img"><img src="assets/img/${f}.webp" alt="The Skin BLVD Makati: ${esc(c)}" loading="lazy"></div><figcaption>${esc(c)}</figcaption></figure>`).join('');
 
   /* ===== Stories ===== */
   const ST = [['st1', 'Lip filler', 'Perfectly plumped'], ['st2', 'Jawtox', 'Sculpted naturally'], ['st3', 'Rejuran I', 'Under-eyes, refreshed']];
-  $('#storiesGrid').innerHTML = ST.map(([f, k, t]) => `<figure class="polaroid reveal"><img src="assets/img/${f}.webp" alt="${esc(k)} before and after, as posted on The Skin BLVD's Facebook page" loading="lazy"><figcaption><small>${esc(k)}</small>${esc(t)}</figcaption></figure>`).join('');
+  $('#storiesGrid').innerHTML = ST.map(([f, k, t], i) => `<figure class="pol p${i}"><img src="assets/img/${f}.webp" alt="${esc(k)} before and after, as posted on The Skin BLVD's Facebook page" loading="lazy" width="1024" height="1280"><figcaption><small>${esc(k)}</small>${esc(t)}</figcaption></figure>`).join('');
 
   /* ===== FAQ ===== */
   const FAQ = [
@@ -139,7 +128,7 @@
     ['Should I start Botox in my 20s?', 'It depends on your face and goals. Botox can do more than smooth wrinkles: it can also help with clenching, jawline shape and muscle tension. Book a consultation and let our doctors assess.'],
     ['Is microneedling painful?', 'Numbing cream helps minimize discomfort. Mild redness typically fades within 24–72 hours, and you should avoid makeup for at least 24 hours.']
   ];
-  $('#faqList').innerHTML = FAQ.map(([q, a], i) => `<details class="reveal"${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('');
+  $('#faqList').innerHTML = FAQ.map(([q, a], i) => `<details class="fade-up"${i === 0 ? ' open' : ''}><summary>${esc(q)}<i aria-hidden="true"></i></summary><p>${esc(a)}</p></details>`).join('');
 
   /* ===== Open now (daily 11AM–7PM Manila) ===== */
   const setOpen = () => {
@@ -151,18 +140,14 @@
   setOpen(); setInterval(setOpen, 60000);
 
   /* ===== Nav ===== */
-  const nav = $('#nav'), bar = $('.progress span'), burger = $('#burger'), links = $('#links');
-  const onScroll = () => { nav.classList.toggle('solid', scrollY > 30); const h = document.documentElement.scrollHeight - innerHeight; bar.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%'; };
+  const nav = $('#nav'), burger = $('#burger'), links = $('#links');
+  const onScroll = () => nav.classList.toggle('solid', scrollY > 40);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  const closeNav = () => { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
-  burger.addEventListener('click', () => { const o = !links.classList.contains('open'); links.classList.toggle('open', o); burger.setAttribute('aria-expanded', String(o)); document.body.style.overflow = o ? 'hidden' : ''; });
+  const closeNav = () => { links.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; window.__lenis?.start(); };
+  burger.addEventListener('click', () => { const o = !links.classList.contains('open'); links.classList.toggle('open', o); burger.setAttribute('aria-expanded', String(o)); document.body.style.overflow = o ? 'hidden' : ''; o ? window.__lenis?.stop() : window.__lenis?.start(); });
   $$('a, button', links).forEach(a => a.addEventListener('click', closeNav));
 
-  /* ===== Reveal ===== */
-  if ('IntersectionObserver' in window && !reduce) {
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-    $$('.reveal').forEach(el => io.observe(el));
-  } else $$('.reveal').forEach(el => el.classList.add('in'));
+  /* reveal handled by anim.js (GSAP) */
 
   /* ===== Booking ===== */
   const modal = $('#book'), svc = $('#bkSvc');
