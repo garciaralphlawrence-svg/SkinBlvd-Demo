@@ -13,9 +13,9 @@
   --tile:#3b1b1f;        /* counter tiles */
   --ink:#3b1b1f;
   --text:#5e3a3d;
-  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
-  --logo:'Italiana','Instrument Serif',serif;
-  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --logo:'Cormorant Garamond',Georgia,serif;
+  --sans:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
   --r:18px;
   --shadow:0 30px 60px -30px rgba(40,10,14,.55);
   --ease:cubic-bezier(.2,.7,.2,1);
@@ -23,7 +23,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16.5px}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:15.5px}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 button{font:inherit;cursor:pointer;color:inherit;background:none;border:0}
@@ -108,7 +108,7 @@ h2 em,h1 em{display:block;text-transform:none;font-style:italic;font-size:.62em;
 .arch{border-radius:999px 999px 14px 14px;overflow:hidden;background:var(--maroon-l);position:relative}
 .arch img{width:100%;height:100%;object-fit:cover}
 .hero-art .arch{aspect-ratio:4/5;box-shadow:0 50px 80px -40px rgba(0,0,0,.7)}
-.hero-art .arch img{object-position:24% 50%;animation:zoom 14s ease-out both}
+.hero-art .arch img{object-position:24% 50%;}
 @keyframes zoom{from{transform:scale(1.08)}}
 .hero-art::after{content:"";position:absolute;inset:-14px;border:1px solid rgba(242,230,223,.28);border-radius:999px 999px 22px 22px;pointer-events:none}
 .hero-pol{position:absolute;left:-90px;bottom:-30px;width:190px;z-index:2}
@@ -419,3 +419,52 @@ button.mbox:hover{transform:translateY(-3px)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;translate:none}
 }
+
+
+/* ===== Type refinement: Cormorant Garamond + Montserrat ===== */
+h1,h2,h3,.item h3,.vbox h3,.note b,.team b,.pick b,.mosaic figcaption,.branch h3,.foot-h,.sheet h3,.seg button b,.chat-head b,.track span,.finder-out h3,.empty{text-transform:none}
+h1,h2,h3{font-weight:500;letter-spacing:-.01em;line-height:1.02}
+h2{font-size:clamp(2.5rem,5.2vw,4.1rem)}
+h2 em,h1 em{font-weight:400;font-size:.86em;line-height:1.05;margin-top:.04em;letter-spacing:-.005em}
+.hero h1{font-size:clamp(3rem,6.2vw,5.2rem);text-transform:none;line-height:.98;font-weight:500}
+.sub,.lede{font-weight:400}
+.lede{font-size:1.02rem;line-height:1.75}
+.sub{font-size:.98rem;line-height:1.75}
+.tag,.btn,.tab,.hero-meta,.links a,.linkbtn{font-family:var(--sans)}
+.btn{font-size:.72rem;letter-spacing:.18em;font-weight:500}
+.tab{font-size:.68rem;letter-spacing:.16em}
+.links a,.linkbtn{font-size:.68rem;letter-spacing:.2em;font-weight:500}
+.hero-meta{font-size:.68rem;letter-spacing:.18em;font-weight:500}
+.tag{font-size:.64rem;letter-spacing:.24em;font-weight:600}
+/* logo lockup: their wordmark is spaced caps in a high-contrast serif */
+.logo b,.lockup b{font-family:var(--serif);font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.logo b{font-size:1.45rem}
+.lockup b{font-size:clamp(3rem,6.4vw,5.4rem);letter-spacing:.05em}
+.logo small,.lockup small{font-weight:500}
+.logo i,.lockup i{font-family:var(--sans);font-weight:400;letter-spacing:.24em}
+.item h3{font-size:1.9rem;font-weight:500}
+.item p{font-size:.88rem;font-weight:400}
+.note b{font-size:1.7rem;font-weight:500}
+.note span,.team span,.branch p,.faq p{font-weight:400;font-size:.88rem}
+.vbox h3{font-size:clamp(2.2rem,3.6vw,2.9rem);font-weight:500}
+.vbox li{font-size:.86rem}
+.vs-tabs button{font-size:1.2rem;font-weight:500}
+.mbox{font-size:1.45rem;font-weight:500}
+.myth .fact .mbox{font-size:.88rem}
+.team b{font-size:1.55rem;font-weight:500}
+.quote{font-weight:500;font-size:clamp(1.5rem,2.4vw,1.95rem)}
+.pick b{font-size:1.55rem;font-weight:500}
+.finder-out h3{font-size:2.5rem}
+.empty{font-size:1.9rem}
+.mosaic figcaption{font-size:1.4rem;font-weight:500;font-style:italic}
+.faq summary{font-size:1.5rem;font-weight:500}
+.branch h3{font-size:2.4rem}
+.phone{font-size:1.7rem;font-weight:500}
+.foot-h{font-size:1.5rem;font-weight:500}
+.track span{font-size:1.45rem;font-weight:500}
+.polaroid figcaption{font-size:1.1rem;font-weight:500}
+.sheet h3{font-size:2.6rem}
+.seg button b{font-size:1.4rem;font-weight:500}
+.chat-head b{font-size:1.45rem;font-weight:500}
+.concern{font-size:.84rem}
+.fine{font-size:.8rem}

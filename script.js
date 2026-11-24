@@ -123,7 +123,7 @@
   empty();
 
   /* ===== Inside ===== */
-  const IN = [['in1', 'Front desk', 'a'], ['in2', 'Lounge', 'b'], ['in3', 'Doctors’ room', ''], ['in4', 'Coffee & snack bar', ''], ['in5', '7 treatment rooms', 'w'], ['in6', 'Storefront', 'w']];
+  const IN = [['in1', 'Front desk', 'a'], ['in4', 'Coffee & snack bar', 'b'], ['in2', 'Lounge', ''], ['in3', 'Doctors’ room', ''], ['in5', 'Hallway to 7 treatment rooms', 'w'], ['in6', 'Storefront', 'w']];
   $('#mosaic').innerHTML = IN.map(([f, c, k]) => `<figure class="reveal ${k}"><img src="assets/img/${f}.webp" alt="The Skin BLVD Makati: ${esc(c)}" loading="lazy"><figcaption>${esc(c)}</figcaption></figure>`).join('');
 
   /* ===== Stories ===== */
