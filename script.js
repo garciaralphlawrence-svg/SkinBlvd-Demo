@@ -48,8 +48,8 @@
     const c = CATS[catI];
     $$('.tab').forEach((b, i) => b.setAttribute('aria-selected', String(i === catI)));
     const mi = $('#menuImg'); mi.style.animation = 'none'; mi.offsetWidth; mi.style.animation = ''; mi.src = `assets/img/${c.img}.webp`; mi.alt = c.tab + ' poster from The Skin BLVD';
-    $('#menuCap').innerHTML = `${esc(c.cap)}<small>${esc(c.capS)}</small>`;
-    $('#items').innerHTML = c.items.map(([n, d, tags], i) => `<article class="item" style="animation-delay:${i * 60}ms"><h3>${esc(n)}</h3><p>${esc(d)}</p><div class="tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div><button data-book="${esc(n)}" aria-label="Book ${esc(n)}">→</button></article>`).join('');
+    $('#menuCap').textContent = c.cap;
+    $('#items').innerHTML = c.items.map(([n, d, tags], i) => `<article class="item" style="animation-delay:${i * 60}ms"><h3>${esc(n)}</h3><p>${esc(d)}</p><div class="foot-row"><div class="tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div><button data-book="${esc(n)}" aria-label="Book ${esc(n)}">Book</button></div></article>`).join('');
   };
   $('#tabs').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (b) { catI = +b.dataset.t; renderCat(); } });
   renderCat();
@@ -74,8 +74,8 @@
   ];
   let vsI = 0;
   $('#vsTabs').innerHTML = VS.map((v, i) => `<button role="tab" aria-selected="${i === 0}" data-v="${i}">${esc(v[0])}</button>`).join('');
-  const card = ([k, h, p, li]) => `<div class="card"><small>${esc(k)}</small><h3>${esc(h)}</h3><p>${esc(p)}</p><ul>${li.map(x => `<li>${esc(x)}</li>`).join('')}</ul><button class="mini-btn" style="margin-top:20px" data-book="${esc(h)}">Ask about ${esc(h)}</button></div>`;
-  const renderVs = () => { const v = VS[vsI]; $$('#vsTabs button').forEach((b, i) => b.setAttribute('aria-selected', String(i === vsI))); $('#vs').innerHTML = card(v[2]) + `<div class="mid">vs</div>` + card(v[3]); };
+  const card = ([k, h, p, li]) => `<div class="vbox"><div class="top"><small>${esc(k)}</small><h3>${esc(h)}</h3><p>${esc(p)}</p></div><ul>${li.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  const renderVs = () => { const v = VS[vsI]; $$('#vsTabs button').forEach((b, i) => b.setAttribute('aria-selected', String(i === vsI))); $('#vs').innerHTML = card(v[2]) + `<span class="vs-badge" aria-hidden="true">vs</span>` + card(v[3]); $('#vsNote').innerHTML = `${esc(v[1])} <button data-book>Let our doctors decide →</button>`; };
   $('#vsTabs').addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (b) { vsI = +b.dataset.v; renderVs(); } });
   renderVs();
 
@@ -88,8 +88,8 @@
     ['You can apply makeup immediately.', 'Avoid makeup for at least 24 hours or until your provider advises it’s safe.'],
     ['Recovery takes weeks.', 'Mild redness typically fades within 24–72 hours, though recovery varies.']
   ];
-  $('#myths').innerHTML = MYTHS.map(([m, f]) => `<button class="flip reveal" aria-pressed="false"><span class="in"><span class="f"><small>Myth</small><p>${esc(m)}</p><span class="hint">Tap for the fact ↻</span></span><span class="b"><small>Fact</small><p>${esc(f)}</p><span class="hint">Tap to flip back</span></span></span></button>`).join('');
-  $('#myths').addEventListener('click', e => { const b = e.target.closest('.flip'); if (b) b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); });
+  $('#myths').innerHTML = MYTHS.map(([m, f]) => `<div class="myth reveal" data-open="true"><span class="pill">MYTH</span><div class="mbox">${esc(m)}</div><div class="fact"><span class="pill">FACT</span><div class="mbox">${esc(f)}</div></div></div>`).join('');
+  $('#myths').addEventListener('click', e => { const b = e.target.closest('button.mbox'); if (!b) return; const m = b.closest('.myth'), o = m.dataset.open !== 'true'; m.dataset.open = String(o); b.setAttribute('aria-expanded', String(o)); });
 
   /* ===== Finder ===== */
   const CON = [
@@ -107,7 +107,7 @@
   ];
   ALL.push({ n: 'Consultation', d: 'Let our doctors assess your skin and facial anatomy', cat: 'Start here' });
   const out = $('#finderOut');
-  const empty = () => { out.innerHTML = `<div class="empty">Choose a concern<br>to see your matches.</div>`; };
+  const empty = () => { out.innerHTML = `<div class="empty"><div><span>Your matches</span>Choose a concern<br>to begin.</div></div>`; };
   $('#concerns').innerHTML = CON.map((c, i) => `<button class="concern" aria-pressed="false" data-c="${i}">${esc(c[0])}</button>`).join('');
   $('#concerns').addEventListener('click', e => {
     const b = e.target.closest('[data-c]'); if (!b) return;
@@ -118,7 +118,7 @@
     const [t, why, refs] = CON[+b.dataset.c];
     out.innerHTML = `<h3>${esc(t)}</h3><p class="why">${esc(why)}</p>` + refs.map(n => ALL.find(x => x.n === n)).map((it, i) =>
       `<div class="pick" style="animation-delay:${i * 70}ms"><div><b>${esc(it.n)}</b><small>${esc(it.d)}</small></div><button data-book="${esc(it.n)}">Book</button></div>`).join('') +
-      `<p class="note">Suggestions only. Your Skin BLVD doctor confirms the right treatment during your consultation.</p>`;
+      `<p class="note-s">Suggestions only. Your Skin BLVD doctor confirms the right treatment during your consultation.</p>`;
   });
   empty();
 
@@ -127,8 +127,8 @@
   $('#mosaic').innerHTML = IN.map(([f, c, k]) => `<figure class="reveal ${k}"><img src="assets/img/${f}.webp" alt="The Skin BLVD Makati: ${esc(c)}" loading="lazy"><figcaption>${esc(c)}</figcaption></figure>`).join('');
 
   /* ===== Stories ===== */
-  const ST = [['st1', 'Lip filler', 'Perfectly plumped: balanced, defined, naturally fuller.'], ['st2', 'Jawtox', 'Sculpted naturally: softer, snatched, more defined.'], ['st3', 'Rejuran I', 'Under-eyes, refreshed: smoother, hydrated, brighter.']];
-  $('#storiesGrid').innerHTML = ST.map(([f, k, t]) => `<article class="story reveal"><img src="assets/img/${f}.webp" alt="${esc(k)} before and after, from The Skin BLVD's Facebook page" loading="lazy"><div><small>${esc(k)}</small><p>${esc(t)}</p></div></article>`).join('');
+  const ST = [['st1', 'Lip filler', 'Perfectly plumped'], ['st2', 'Jawtox', 'Sculpted naturally'], ['st3', 'Rejuran I', 'Under-eyes, refreshed']];
+  $('#storiesGrid').innerHTML = ST.map(([f, k, t]) => `<figure class="polaroid reveal"><img src="assets/img/${f}.webp" alt="${esc(k)} before and after, as posted on The Skin BLVD's Facebook page" loading="lazy"><figcaption><small>${esc(k)}</small>${esc(t)}</figcaption></figure>`).join('');
 
   /* ===== FAQ ===== */
   const FAQ = [
